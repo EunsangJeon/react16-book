@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-const listOfItems = (
-  <ul className="list-of-items">
-    <li className="item-1">Item 1</li>
-    <li className="item-2">Item 2</li>
-    <li className="item-3">Item 3</li>
-  </ul>
-);
+class ReactClass extends Component {
+  render() {
+    return(
+      <h1 className="header">React Component</h1>
+    );
+  }
+}
 
-ReactDOM.render(
-  listOfItems,
+const reactComponent = ReactDOM.render(
+  <ReactClass />,
   document.getElementById('react-application')
 );
+
+export default ReactClass;
