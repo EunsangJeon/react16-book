@@ -1,27 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const h1 = React.createElement(
-  'h1', 
-  { className: 'header', key: 'header' },
-  'This is React'
-);
-
-const p = React.createElement(
-  'p',
-  { className: 'content', key: 'content' },
-  'And that is how it works.'
-);
-
-const reactFragment = [h1, p];
-
-const section = React.createElement(
-  'section',
-  { className: 'container' },
-  reactFragment
+const listOfItems = (
+  <ul className="list-of-items">
+    <li className="item-1">Item 1</li>
+    <li className="item-2">Item 2</li>
+    <li className="item-3">Item 3</li>
+  </ul>
 );
 
 ReactDOM.render(
-  section,
+  listOfItems,
   document.getElementById('react-application')
 );
