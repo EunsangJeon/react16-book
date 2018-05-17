@@ -1,50 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import Application from './components/Application';
 
-class ReactClass extends Component {
-  state = {
-    isHeaderHidden: false,
-  };
-
-  handleClick = ()=>{
-    this.setState(prevState =>({
-      isHeaderHidden: !prevState.isHeaderHidden
-    }));
-  }
-
-  render() {
-    const {
-      isHeaderHidden
-    } = this.state;
-
-    if(isHeaderHidden){
-      return (
-        <button
-          className="btn btn-default"
-          onClick={this.handleClick}
-        >
-        Toggle Header
-        </button>
-      );
-    }
-
-    return(
-      <div>
-        <h1 className="header">Stateful React Component</h1>
-        <button
-          className="btn btn-default"
-          onClick={this.handleClick}
-        >
-        Toggle Header
-        </button>
-      </div>
-    )
-  }
-}
-
-const reactComponent = ReactDOM.render(
-  <ReactClass />,
+ReactDOM.render(
+  <Application />,
   document.getElementById('react-application')
-);
-
-export default ReactClass;
+)
