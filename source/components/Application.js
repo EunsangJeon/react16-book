@@ -44,7 +44,7 @@ class Application extends Component {
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-4-text-center">
-            <Stream onAddTweetToCollection = {addTweetCollection} />
+            <Stream onAddTweetToCollection = {addTweetToCollection} />
           </div>
           <div className="col-md-8">
             <Collection 
@@ -58,3 +58,5 @@ class Application extends Component {
     );
   }
 }
+
+export default Application;
