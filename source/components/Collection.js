@@ -17,17 +17,13 @@ class Collection extends Component {
     return JSON.stringify(htmlMarkup);
   }
 
-  getListOfTweetIds = () => {
-    return Object.keys(this.props.tweets);
-  }
+  getListOfTweetIds = () => Object.keys(this.props.tweets)
 
-  getNumberOfTweetsInCollection = () => {
-    return this.getListOfTweetIds().length;
-  }
+  getNumberOfTweetsInCollection = () => this.getListOfTweetIds().length
 
   render() {
     const numberOfTweetsInCollection = this.getNumberOfTweetsInCollection();
-
+    //console.log("On Collection.js, numberOfTweetsInCollection: " + numberOfTweetsInCollection);
     if(numberOfTweetsInCollection > 0) {
       const {
         tweets,
@@ -47,7 +43,7 @@ class Collection extends Component {
 
           <TweetList
             tweets={tweets}
-            onRemoveTweetFromCollectino={onRemoveTweetFromCollection}
+            onRemoveTweetFromCollection={onRemoveTweetFromCollection}
           />
         </div>
       );

@@ -10,6 +10,7 @@ class Stream extends Component{
 
   componentDidMount(){
     SnapkiteStreamClient.initializeStream(this.handleNewTweet);
+    console.log('Stream Mounted');
   }
 
   componentWillUnmount(){

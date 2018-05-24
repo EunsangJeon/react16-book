@@ -32,6 +32,8 @@ class StreamTweet extends Component {
     
     const { tweet: currentTweet } = this.props;
     const { tweet: nextTweet } = nextProps;
+    const currentTweetLength = currentTweet.text.length;
+    const nextTweetLength = nextTweet.text.length;
     const isNumberOfCharactersIncreasing = (nextTweetLength > currentTweetLength);
     let headerText;
 
@@ -82,7 +84,7 @@ class StreamTweet extends Component {
 
     return (
       <section>
-        <header text={headerText} />
+        <Header text={headerText} />
         <Tweet
           tweet={tweet}
           onImageClick={onAddTweetToCollection}
