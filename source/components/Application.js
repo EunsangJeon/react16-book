@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Stream from './Stream';
-import Collection from './Collection'
+import Collection from './Collection';
 
 class Application extends Component {
   state = {
@@ -9,9 +9,9 @@ class Application extends Component {
 
   addTweetToCollection = (tweet) => {
     const { collectionTweets } = this.state;
-    
-    collectionTwwets[tweet.id] = tweet;
-    
+
+    collectionTweets[tweet.id] = tweet;
+
     this.setState({
       collectionTweets: collectionTweets
     });
@@ -40,14 +40,14 @@ class Application extends Component {
       removeAllTweetsFromCollection
     } = this;
 
-    return(
+    return (
       <div className="container-fluid">
         <div className="row">
-          <div className="col-md-4-text-center">
-            <Stream onAddTweetToCollection = {addTweetToCollection} />
+          <div className="col-md-4 text-center">
+            <Stream onAddTweetToCollection={addTweetToCollection}/>
           </div>
           <div className="col-md-8">
-            <Collection 
+            <Collection
               tweets={this.state.collectionTweets}
               onRemoveTweetFromCollection={removeTweetFromCollection}
               onRemoveAllTweetsFromCollection={removeAllTweetsFromCollection}

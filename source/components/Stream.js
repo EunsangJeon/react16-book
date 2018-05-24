@@ -3,27 +3,26 @@ import SnapkiteStreamClient from 'snapkite-stream-client';
 import StreamTweet from './StreamTweet';
 import Header from './Header';
 
-class Stream extends Component{
+class Stream extends Component {
   state = {
     tweet: null
   }
 
-  componentDidMount(){
+  componentDidMount() {
     SnapkiteStreamClient.initializeStream(this.handleNewTweet);
-    console.log('Stream Mounted');
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     SnapkiteStreamClient.destroyStream();
   }
 
   handleNewTweet = (tweet) => {
     this.setState({
-      tweet:tweet
+      tweet: tweet
     });
   }
 
-  render(){
+  render() {
     const { tweet } = this.state;
     const { onAddTweetToCollection } = this.props;
     const headerText = 'Waiting for public photos from Twitter...';
@@ -32,14 +31,14 @@ class Stream extends Component{
       return (
         <StreamTweet
           tweet={tweet}
-          onAddTweetToCollection={onAddTweetToCollection}
+          onAddTweetToCollection={this.props.onAddTweetToCollection}
         />
       );
     }
-    
+
     return (
-      <Header text={headerText} />
-    );    
+      <Header text={headerText}/>
+    );
   }
 }
 

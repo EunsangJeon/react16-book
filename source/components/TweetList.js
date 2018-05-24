@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Tweet from './Tweet';
-import TweetUtils from '../utils/TweetUtils';
 
 const listStyle = {
   padding: '0'
@@ -12,12 +11,16 @@ const listItemStyle = {
 };
 
 class TweetList extends Component {
+
+  getListOfTweetIds = () =>
+    Object.keys(this.props.tweets);
+
   getTweetElement = (tweetId) => {
     const { tweets, onRemoveTweetFromCollection } = this.props;
     const tweet = tweets[tweetId];
     let tweetElement;
 
-    if(onRemoveTweetFromCollection){
+    if (onRemoveTweetFromCollection) {
       tweetElement = (
         <Tweet
           tweet={tweet}
@@ -25,7 +28,7 @@ class TweetList extends Component {
         />
       );
     } else {
-      tweetElement=<Tweet tweet={tweet}/>;
+      tweetElement = <Tweet tweet={tweet}/>;
     }
 
     return (
@@ -36,7 +39,9 @@ class TweetList extends Component {
   }
 
   render() {
-    const tweetElement = TweetUtils.getListOfTweetIds().map(this.getTweetElement);
+    const tweetElements = this
+      .getListOfTweetIds()
+      .map(this.getTweetElement);
 
     return (
       <ul style={listStyle}>

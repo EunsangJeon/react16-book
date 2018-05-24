@@ -7,9 +7,11 @@ const inputStyle = {
 };
 
 class CollectionRenameForm extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
+
     const { name } = props;
+
     this.state = {
       inputValue: name
     };
@@ -17,7 +19,7 @@ class CollectionRenameForm extends Component {
 
   setInputValue = (inputValue) => {
     this.setState({
-      inputValue
+      inputValue: inputValue
     });
   }
 
@@ -30,15 +32,15 @@ class CollectionRenameForm extends Component {
     event.preventDefault();
 
     const { onChangeCollectionName } = this.props;
-    const { imputValue: collectionName } = this.state;
- 
+    const { inputValue: collectionName } = this.state;
+
     onChangeCollectionName(collectionName);
   }
 
-  handleFromCancel = (event) => {
+  handleFormCancel = (event) => {
     event.preventDefault();
 
-    const{
+    const {
       name: collectionName,
       onCancelCollectionNameChange
     } = this.props;
@@ -46,36 +48,27 @@ class CollectionRenameForm extends Component {
     this.setInputValue(collectionName);
     onCancelCollectionNameChange();
   }
-  
+
   componentDidMount() {
-    this.collectionNameInput.focus();
+    this.refs.collectionName.focus();
   }
 
   render() {
-    const { inputValue } = this.state;
-
     return (
       <form className="form-inline" onSubmit={this.handleSubmit}>
-        <Header text="Collection name:"/>
+        <Header text="Collection name:" />
+
         <div className="form-group">
           <input
-            className="form-group"
+            className="form-control"
             style={inputStyle}
             onChange={this.handleInputValueChange}
-            value={inputValue}
-            ref={input=>{ this.collectionNameInput = input; }}
-          />
+            value={this.state.inputValue}
+            ref="collectionName" />
         </div>
 
-        <Button
-          label="Change"
-          handleClick={this.handleFormSubmit}
-        />
-
-        <Button
-          label="Cancel"
-          handleClick={this.handleFormCancel}
-        />
+        <Button label="Change" handleClick={this.handleFormSubmit} />
+        <Button label="Cancel" handleClick={this.handleFormCancel} />
       </form>
     );
   }

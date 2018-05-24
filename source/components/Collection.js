@@ -5,11 +5,12 @@ import TweetList from './TweetList';
 import Header from './Header';
 
 class Collection extends Component {
-  createHtmlMarkupStringOfTweetList = () => {
-    const { tweets } = this.props;
+
+  createHtmlMarkupStringOfTweetList() {
     const htmlString = ReactDOMServer.renderToStaticMarkup(
-      <TweetList tweets={ tweets } />
+      <TweetList tweets={this.props.tweets}/>
     );
+
     const htmlMarkup = {
       html: htmlString
     };
@@ -17,39 +18,37 @@ class Collection extends Component {
     return JSON.stringify(htmlMarkup);
   }
 
-  getListOfTweetIds = () => Object.keys(this.props.tweets)
+  getListOfTweetIds = () =>
+    Object.keys(this.props.tweets)
 
-  getNumberOfTweetsInCollection = () => this.getListOfTweetIds().length
+  getNumberOfTweetsInCollection = () =>
+    this.getListOfTweetIds().length
 
   render() {
     const numberOfTweetsInCollection = this.getNumberOfTweetsInCollection();
-    //console.log("On Collection.js, numberOfTweetsInCollection: " + numberOfTweetsInCollection);
-    if(numberOfTweetsInCollection > 0) {
-      const {
-        tweets,
-        onRemoveAllTweetsFromCollection,
-        onRemoveTweetFromCollection
-      } = this.props ;
 
+    if (numberOfTweetsInCollection > 0) {
       const htmlMarkup = this.createHtmlMarkupStringOfTweetList();
+      const tweets = this.props.tweets;
+      const removeAllTweetsFromCollection = this.props.onRemoveAllTweetsFromCollection;
+      const handleRemoveTweetFromCollection = this.props.onRemoveTweetFromCollection;
 
       return (
         <div>
           <CollectionControls
             numberOfTweetsInCollection={numberOfTweetsInCollection}
             htmlMarkup={htmlMarkup}
-            onRemoveAllTweetsFromCollection={onRemoveAllTweetsFromCollection}
+            onRemoveAllTweetsFromCollection={removeAllTweetsFromCollection}
           />
-
           <TweetList
             tweets={tweets}
-            onRemoveTweetFromCollection={onRemoveTweetFromCollection}
+            onRemoveTweetFromCollection={handleRemoveTweetFromCollection}
           />
         </div>
       );
     }
 
-    return <Header text="Your collection is empty" />;
+    return <Header text="Your collection is empty"/>;
   }
 }
 

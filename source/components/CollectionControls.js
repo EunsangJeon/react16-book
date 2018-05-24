@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import Header from './Header';
 import Button from './Button';
@@ -8,14 +9,14 @@ class CollectionControls extends Component {
   state = {
     name: 'new',
     isEditingName: false
-  };
+  }
 
   getHeaderText = () => {
     const { name } = this.state;
     const { numberOfTweetsInCollection } = this.props;
     let text = numberOfTweetsInCollection;
 
-    if(numberOfTweetsInCollection === 1) {
+    if (numberOfTweetsInCollection === 1) {
       text = `${text} tweet in your`;
     } else {
       text = `${text} tweets in your`;
@@ -36,7 +37,7 @@ class CollectionControls extends Component {
 
   setCollectionName = (name) => {
     this.setState({
-      name,
+      name: name,
       isEditingName: false
     });
   }
@@ -48,29 +49,34 @@ class CollectionControls extends Component {
       htmlMarkup
     } = this.props;
 
-    if(isEditingName) {
-      return(
+    if (isEditingName) {
+      return (
         <CollectionRenameForm
           name={name}
           onChangeCollectionName={this.setCollectionName}
-          onCancelCollectionName={this.toggleEditCollectionName}
+          onCancelCollectionNameChange={this.toggleEditCollectionName}
         />
       );
     }
 
-    return(
+    return (
       <div>
         <Header text={this.getHeaderText()}/>
+
         <Button
           label="Rename collection"
           handleClick={this.toggleEditCollectionName}
         />
+
         <Button
-          label="Empty Collection"
+          label="Empty collection"
           handleClick={onRemoveAllTweetsFromCollection}
         />
+
         <CollectionExportForm htmlMarkup={htmlMarkup}/>
       </div>
     );
   }
 }
+
+export default CollectionControls;

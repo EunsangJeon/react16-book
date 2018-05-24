@@ -1,7 +1,7 @@
 import React from 'react';
 
 const buttonStyle = {
-  margin: '10px 0'
+  margin: '10px 10px 10px 0'
 };
 
 const Button = ({ label, handleClick }) => (
@@ -12,6 +12,6 @@ const Button = ({ label, handleClick }) => (
   >
     {label}
   </button>
-)
+);
 
 export default Button;
