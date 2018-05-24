@@ -49,7 +49,7 @@ class Application extends Component {
           <div className="col-md-8">
             <Collection 
               tweets={this.state.collectionTweets}
-              onRemoveTweetFromCollection={removeTweetFromCOllection}
+              onRemoveTweetFromCollection={removeTweetFromCollection}
               onRemoveAllTweetsFromCollection={removeAllTweetsFromCollection}
             />
           </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import SnapkiteStreamClient from 'snapkite-stream-client';
 import StreamTweet from './StreamTweet';
 import Header from './Header';
 
