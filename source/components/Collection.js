@@ -25,9 +25,11 @@ class Collection extends Component {
     this.getListOfTweetIds().length
 
   render() {
+    console.log("Collection.js has been rendered");
     const numberOfTweetsInCollection = this.getNumberOfTweetsInCollection();
 
     if (numberOfTweetsInCollection > 0) {
+      console.log("Collection.js is rendering CollectionControls.js and TweetList.js as [numberOfTweetsInCollection] is bigger than 0");
       const htmlMarkup = this.createHtmlMarkupStringOfTweetList();
       const tweets = this.props.tweets;
       const removeAllTweetsFromCollection = this.props.onRemoveAllTweetsFromCollection;
@@ -47,7 +49,7 @@ class Collection extends Component {
         </div>
       );
     }
-
+    console.log("Collection.js is rendering Header.js with message 'empty' as [numberOfTweetsInCollection] is 0");
     return <Header text="Your collection is empty"/>;
   }
 }

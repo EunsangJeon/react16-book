@@ -34,12 +34,13 @@ class Application extends Component {
   }
 
   render() {
+    console.log("Application.js has been rendered");
     const {
       addTweetToCollection,
       removeTweetFromCollection,
       removeAllTweetsFromCollection
     } = this;
-
+    console.log("Application.js is rendering both Stream.js and Collection.js");
     return (
       <div className="container-fluid">
         <div className="row">

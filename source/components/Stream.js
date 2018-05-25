@@ -10,6 +10,7 @@ class Stream extends Component {
 
   componentDidMount() {
     SnapkiteStreamClient.initializeStream(this.handleNewTweet);
+    console.log("SnapkiteStreamClient.initializeStream(this.handleNewTweet) on Stream.js");
   }
 
   componentWillUnmount() {
@@ -23,19 +24,21 @@ class Stream extends Component {
   }
 
   render() {
+    console.log("Stream.js has been rendered");
     const { tweet } = this.state;
     const { onAddTweetToCollection } = this.props;
     const headerText = 'Waiting for public photos from Twitter...';
 
     if (tweet) {
+      console.log("Stream.js renders StreamTweet as it has [tweet]");
       return (
         <StreamTweet
           tweet={tweet}
-          onAddTweetToCollection={this.props.onAddTweetToCollection}
+          onAddTweetToCollection={onAddTweetToCollection}
         />
       );
     }
-
+    console.log("Stream.js renders Header.js with 'waiting photo' message since it doesn't have [tweet]");
     return (
       <Header text={headerText}/>
     );
