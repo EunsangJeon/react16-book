@@ -1,2 +1,2 @@
-snapkite-engine/
-node-modules/
+snapkite-engine/*
+node-modules/*
