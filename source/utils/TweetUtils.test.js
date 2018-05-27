@@ -12,7 +12,7 @@ describe('TweetUtils', () => {
         'tweet2',
         'tweet3'
     ];
-    const actualListOfTweetIds = TweetUtils.getListOfTeetIds(
+    const actualListOfTweetIds = TweetUtils.getListOfTweetIds(
         tweetsMock
     )
 
