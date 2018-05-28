@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Application from './components/Application';
+import { initializeStreamOfTweets } from './utils/WebAPIUtils'
 
-ReactDOM.render(
-  <Application />,
-  document.getElementById('react-application')
-)
+initializeStreamOfTweets();
+
+//ReactDOM.render(
+//  <Application />,
+//  document.getElementById('react-application')
+//)
