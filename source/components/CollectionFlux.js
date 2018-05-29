@@ -4,13 +4,30 @@ import CollectionControls from './CollectionControls';
 import TweetList from './TweetList';
 import Header from './Header';
 import CollectionUtils from '../utils/CollectionUtils';
-
+import CollectionStore from '../stores/CollectionStore';
 
 class Collection extends Component {
+    state = {
+      collectionTweets: CollectionStore.getCollectionTweets()
+    };
+
+    onCollectionChange = () => {
+      this.setState({
+        collectionTweets: CollectionStore.getCollectionTweets()
+      });
+    }
+
+  componentDidMount(){
+    CollectionStore.addChangeListener(this.onCollectionChange);
+  }
+
+  componentWillUnmount(){
+    CollectionStore.removeChangeListener(this.onCollectionChange);
+  }
+
   createHtmlMarkupStringOfTweetList() {
-    const { collectionTweets } = this.props;
     const htmlString = ReactDOMServer.renderToStaticMarkup(
-      <TweetList tweets={collectionTweets} />
+      <TweetList tweets={this.state.collectionTweets} />
     );
 
     const htmlMarkup = {
@@ -21,7 +38,7 @@ class Collection extends Component {
   }
 
   render() {
-    const { collectionTweets } = this.props;
+    const { collectionTweets } = this.state;
     const numberOfTweetsInCollection = CollectionUtils.getNumberOfTweetsInCollection(collectionTweets);
     let htmlMarkup;
 
@@ -42,10 +59,4 @@ class Collection extends Component {
   }
 }
 
-const mapStateToProps = state => state.collection;
-const mapDispatchToProps = dispatch => ({});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Collection);
+export default Collection;
