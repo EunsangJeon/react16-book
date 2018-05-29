@@ -5,7 +5,7 @@ import { initializeStreamOfTweets } from './utils/WebAPIUtils'
 
 initializeStreamOfTweets();
 
-//ReactDOM.render(
-//  <Application />,
-//  document.getElementById('react-application')
-//)
+ReactDOM.render(
+  <Application />,
+  document.getElementById('react-application')
+)

@@ -2,57 +2,39 @@ import React, { Component } from 'react';
 import Stream from './Stream';
 import Collection from './Collection';
 
-class Application extends Component {
-  state = {
-    collectionTweets: {}
-  }
+const Application = () => (
+  <div className="container-fluid">
+    <div className="row">
+      <div className="col-md-4 text-center">
+        <Stream />
+      </div>
+      <div className="col-md-8">
+        <Collection />
+      </div>
+    </div>
+  </div>
+);
 
-  addTweetToCollection = (tweet) => {
-    const { collectionTweets } = this.state;
+export default Application;
 
-    collectionTweets[tweet.id] = tweet;
-
-    this.setState({
-      collectionTweets: collectionTweets
-    });
-  }
-
-  removeTweetFromCollection = (tweet) => {
-    const { collectionTweets } = this.state;
-
-    delete collectionTweets[tweet.id];
-
-    this.setState({
-      collectionTweets: collectionTweets
-    });
-  }
-
-  removeAllTweetsFromCollection = () => {
-    this.setState({
-      collectionTweets: {}
-    });
-  }
-
+/* class Application extends Component {
   render() {
     console.log("Application.js has been rendered");
+
     const {
-      addTweetToCollection,
-      removeTweetFromCollection,
-      removeAllTweetsFromCollection
-    } = this;
+      collectionTweets
+    } = this.state;
+
     console.log("Application.js is rendering both Stream.js and Collection.js");
+
     return (
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-4 text-center">
-            <Stream onAddTweetToCollection={addTweetToCollection}/>
+            <Stream />
           </div>
           <div className="col-md-8">
-            <Collection
-              tweets={this.state.collectionTweets}
-              onRemoveTweetFromCollection={removeTweetFromCollection}
-              onRemoveAllTweetsFromCollection={removeAllTweetsFromCollection}
-            />
+            <Collection />
           </div>
         </div>
       </div>
@@ -61,3 +43,4 @@ class Application extends Component {
 }
 
 export default Application;
+*/

@@ -11,7 +11,7 @@ function emitChange() {
   TweetStore.emit('change');
 }
 
-const TweetStore = Object.assgin({}, EventEmiiter.prototype, {
+const TweetStore = Object.assign({}, EventEmitter.prototype, {
   addChangeListener(callback) {
     this.on('change', callback);
   },
